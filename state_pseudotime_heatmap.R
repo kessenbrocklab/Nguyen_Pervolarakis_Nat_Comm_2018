@@ -1,3 +1,8 @@
+
+#state_pseudotime_heatmap takes in the output of state_expression_matrix (seperated into object 1 and object 2)
+#output gives a heatmap of the state-based gene expressions with state, cell type (cluster) and individual 
+#annotations including gaps for major visual branches
+
 state_pseudotime_heatmap <- function(plot_matrix,anno_df){
   
   #set colors for heatmap
