@@ -1,3 +1,8 @@
+#state_expression_matrix takes in a monocle object, a raw data expression matrix, a vector of genes, 
+#and a data frame with information giving "main branches" and "state labels" to create logical plot gaps
+#output gives a list with the first item being an average expression matrix by State
+#and the second item being an metadata object for the average expression matrix for use with pheatmap
+
 state_expression_matrix <- function(expression_matrix, monocle_object, heatmap_genes, state_branch_data){
   #compute matrix from monocle_object
   average_matrix <- as.numeric()
@@ -15,14 +20,13 @@ state_expression_matrix <- function(expression_matrix, monocle_object, heatmap_g
     
     #Establish the major cell type label for each State (which cell type is most common across cells)
     temp_clust <- table(temp$general_cluster)
-    #print(which.max(temp_clust))
     clusters <- c(clusters, which.max(temp_clust))
     
+    #Establish the most common individual in each State
     temp_ind <- table(temp$individual_label)
-    #print(which.max(temp_ind))
     individuals <- c(individuals, which.max(temp_ind))
     
-    #Compute average expression of heatmap genes for all cells in State i
+    #Compute average expression of heatmap genes (genes of interest) for all cells in State i
     temp_mat <- expression_matrix[heatmap_genes,rownames(temp)]
     
     #If ncells > 1 in matrix, compute average, otherwise, take raw data
@@ -41,11 +45,12 @@ state_expression_matrix <- function(expression_matrix, monocle_object, heatmap_g
   clusters <- data.frame(clusters)
   rownames(clusters) <- state_branch_data$State
   
+  #reformat individuals into a data frame object
   individuals <- names(individuals)
   individuals <- data.frame(individuals)
   rownames(individuals) <- state_branch_data$State
   
-  #reformat average_matrix into a data frame object
+  #reformat average_matrix (average expression of genes of interest by State) into a data frame object
   colnames(average_matrix) <- state_branch_data[,1]
   plot_matrix <- as.matrix(average_matrix)
   
