@@ -1,4 +1,6 @@
 ########################Ind4 Only Ordering##############################
+	
+	#individual 4 only matrix (gene and cell trimmed based on Seurat analysis)
 	expression.data1 <- all_data_curated[,ind4_data]
 	
 	pheno.data1 <- colnames(expression.data1)
@@ -29,6 +31,8 @@
 	I4_only <- orderCells(I4_only, reverse = F)
 
 ########################Ind5 Only Ordering##############################
+	
+	#individual 5 only matrix (gene and cell trimmed based on Seurat analysis)
 	expression.data1 <- all_data_curated[,ind5_data]
 	
 	pheno.data1 <- colnames(expression.data1)
@@ -59,6 +63,8 @@
 	I5_only <- orderCells(I5_only, reverse = F)
 	
 ########################Ind6 Only Ordering##############################
+	
+	#individual 6 only matrix (gene and cell trimmed based on Seurat analysis)
 	expression.data1 <- all_data_curated[,ind6_data]
 	
 	pheno.data1 <- colnames(expression.data1)
@@ -89,6 +95,8 @@
 	I6_only <- orderCells(I6_only, reverse = F)
 	
 ########################Ind7 Only Ordering##############################
+	
+	#individual 7 only matrix (gene and cell trimmed based on Seurat analysis)
 	expression.data1 <- all_data_curated[,ind7_data]
 	
 	pheno.data1 <- colnames(expression.data1)
@@ -120,7 +128,7 @@
 
 ########################Correlation Analysis Begins##############################
 		
-  #Differential expression test on each individual ordering
+  	#Differential expression test on each individual ordering
 	diff_test_res.I4 <- differentialGeneTest(I4_only, fullModelFormulaStr = "~State")
 	diff_test_res.I5 <- differentialGeneTest(I5_only, fullModelFormulaStr = "~State")
 	diff_test_res.I6 <- differentialGeneTest(I6_only, fullModelFormulaStr = "~State")
