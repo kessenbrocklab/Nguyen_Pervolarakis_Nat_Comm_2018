@@ -1,3 +1,6 @@
+library('monocle')
+library('mclust')
+
 ########################Ind4 Only Ordering##############################
 	
 	#individual 4 only matrix (gene and cell trimmed based on Seurat analysis)
