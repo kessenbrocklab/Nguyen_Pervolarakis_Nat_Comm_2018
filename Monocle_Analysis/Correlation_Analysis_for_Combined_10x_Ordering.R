@@ -1,6 +1,11 @@
 library('monocle')
 library('mclust')
 
+#all data curated contains a matrix consisting for all 4 droplet based dataset, 
+#trimmed for genes kept in the Seurat analysis
+#each of ind4_data, ind5_data, ind6_data, and ind_7 data give the names of 
+#the cells kept from each individaul in the Seurat analysis
+
 ########################Ind4 Only Ordering##############################
 	
 	#individual 4 only matrix (gene and cell trimmed based on Seurat analysis)
